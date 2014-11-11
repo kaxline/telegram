@@ -8,14 +8,17 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   this.resource('index', {path: '/'}, function () {
     this.route('reset-password');
-    this.route('create-account', {path: '/'});
+    this.route('create-account');
     this.route('login');
   });
-  this.resource('user', {path: '/:username'}, function () {
-    this.route('posts');
-    this.route('following');
-    this.route('followers');
-    this.route('post', {path: 'post/:post_id'});
+  this.resource('user', {path: '/'}, function () {
+    this.route('dashboard', {path: '/'});
+    this.resource('profile', {path: '/:user_id'}, function () {
+      this.route('posts');
+      this.route('following');
+      this.route('followers');
+      this.route('post', {path: 'post/:post_id'});
+    });
   });
 });
 

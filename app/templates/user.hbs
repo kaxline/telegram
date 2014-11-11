@@ -1,6 +1,6 @@
 <div class="meta-bar">
     <div class="home-link">
-      {{#link-to "index"}}Home{{/link-to}}
+      {{#link-to "user.dashboard"}}Home{{/link-to}}
     </div>
     <div class="logo">
         <span>Telegram</span>
@@ -11,36 +11,9 @@
     </div>
 </div>
 
-<div class="user-profile-container">
+<div class="user-content-container">
 
-    <div class="profile-image">
-
-    </div>
-
-    <div class="user-info">
-        <span>{{fullName}}</span>
-        <span>@{{username}}</span>
-    </div>
-
-    <button class="button">Follow</button>
-
-    <div class="nav">
-        <ul>
-            <li>
-              {{#link-to "user.posts"}}Posts{{/link-to}}
-            </li>
-            <li>
-              {{#link-to "user.following"}}Following{{/link-to}}
-            </li>
-            <li>
-              {{#link-to "user.followers"}}Followers{{/link-to}}
-            </li>
-        </ul>
-    </div>
-
-    <div class="nav-content">
-      {{outlet}}
-    </div>
+  {{outlet}}
 
 </div>
 

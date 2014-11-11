@@ -119,7 +119,7 @@ h2 {
     float: right;
 }
 
-.user-profile-container {
+.user-content-container {
     margin-left: auto;
     margin-right: auto;
     width: 66%;
@@ -127,7 +127,7 @@ h2 {
     margin-top: 20px;
 }
 
-.user-profile-container .profile-image {
+.user-content-container .profile-image {
     width: 100px;
     height: 100px;
     background-color: #EFEFEF;
@@ -136,15 +136,15 @@ h2 {
     margin-bottom: 20px;
 }
 
-.user-profile-container .user-info > * {
+.user-content-container .user-info > * {
     display: block;
 }
 
-.user-profile-container .nav ul {
+.user-content-container .nav ul {
     list-style-type: none;
 }
 
-.user-profile-container .nav ul li {
+.user-content-container .nav ul li {
     display: inline;
     margin-right: 20px;
 }
