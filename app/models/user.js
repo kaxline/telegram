@@ -1,40 +1,36 @@
 import DS from 'ember-data';
 
 var User = DS.Model.extend({
-  firstName: DS.attr('string'),
-  lastName: DS.attr('string'),
+  name: DS.attr('string'),
+  email: DS.attr('string'),
   profileImage: '',
   fullName: function () {
     return (this.get('firstName') + ' ' + this.get('lastName')).trim();
   }.property('firstName', 'lastName'),
-  username: DS.attr('string'),
   password: DS.attr('string')
 });
 
 User.reopenClass({
   FIXTURES: [
     {
-      id: 1,
-      firstName: 'Keith',
-      lastName: 'Axline',
+      id: 'kaxline',
+      name: 'Keith Axline',
+      email: 'kaxline@gmail.com',
       profileImage: '',
-      username: 'kaxline',
       password: 'password1'
     },
     {
-      id: 2,
-      firstName: 'Joe',
-      lastName: 'Smith',
+      id: 'jsmith',
+      name: 'Joe Smith',
+      email: 'joe.smith@gmail.com',
       profileImage: '',
-      username: 'jsmith',
       password: 'password1'
     },
     {
-      id: 3,
-      firstName: 'Sam',
-      lastName: 'Jackson',
+      id: 'sjackson',
+      name: 'Sam Jackson',
+      email: 'sam.jackson@gmail.com',
       profileImage: '',
-      username: 'sjackson',
       password: 'password1'
     }
   ]
