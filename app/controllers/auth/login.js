@@ -7,11 +7,11 @@ export default Ember.Controller.extend({
       var username = this.get('id');
       var password = this.get('password');
       if (!username) {
-        $('.error-text').html('Please enter a username.').show();
+        this.set('errorMsg', 'Please enter a username.');
         return;
       }
       if (!password) {
-        $('.error-text').html('Please enter a password.').show();
+        this.set('errorMsg', 'Please enter a password.');
         return;
       }
       self.store.find('user', username).then(function (foundUser) {
@@ -23,13 +23,13 @@ export default Ember.Controller.extend({
         } else {
           self.set('id', null);
           self.set('password', null);
-          $('.error-text').html('Username and password do not match.').show();
+          self.set('errorMsg', 'Username and password do not match.');
         }
       }, function (err) {
         self.set('id', null);
         self.set('password', null);
-        $('.error-text').html('No user found with that name.').show();
-      })
+        self.set('errorMsg', 'No user found with that name.');
+      });
     }
   }
 });

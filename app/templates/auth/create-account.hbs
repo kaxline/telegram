@@ -5,14 +5,11 @@
 {{input type="text" placeholder="Enter your username ..." value=username action='signup'}}
 {{input type="password" placeholder="Enter your password ..." value=password action='signup'}}
 
+{{#if errorMsg}}
+  <div class="error">{{errorMsg}}</div>
+{{/if}}
+
 <div class="auth-right-footer">
     <button {{action 'signup' target='controller'}}>Sign up</button>
     <span>{{#link-to "auth.login"}}Login{{/link-to}}</span>
-</div>
-
-<div class="debug">
-    <span>{{name}}</span>
-    <span>{{email}}</span>
-    <span>{{username}}</span>
-    <span>{{password}}</span>
 </div>

@@ -6,13 +6,6 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  // implement full login flow
-  // signup will use store.createRecord
-  // call save on createdRecord
-  // delete session model
-  // change firstName and lastName
-  // store username in id field
-  // add email field in user sign up
   // change author ids on post fixtures
   this.resource('auth', {path: '/'}, function () {
     this.route('reset-password');
@@ -21,12 +14,12 @@ Router.map(function() {
     this.route('logout');
   });
   this.route('dashboard');
-  //this.resource('profile', {path: '/:user_id'}, function () {
-  //  this.route('posts', {path: '/'});
-  //  this.route('following');
-  //  this.route('followers');
-  //  this.route('post', {path: 'post/:post_id'});
-  //});
+  this.resource('profile', {path: '/:user_id'}, function () {
+    this.route('posts', {path: '/'});
+    this.route('following');
+    this.route('followers');
+    this.route('post', {path: 'post/:post_id'});
+  });
 
 });
 

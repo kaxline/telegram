@@ -1,11 +1,11 @@
 body {
     margin: 0;
     padding: 0;
+    font-family: "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 body.auth {
     background-color: #008CB8;
-    font-family: "Open Sans", "Helvetica Neue", sans-serif;
     color: #000000;
     font-size: 13px;
 }
@@ -26,6 +26,15 @@ a:hover {
 
 h2 {
     font-size: 22px;
+}
+
+button {
+    border: 1px solid;
+    padding: 8px;
+    background-color: #ffffff;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .hero-container {
@@ -58,7 +67,7 @@ h2 {
 }
 
 .hero-right-half {
-    margin-top: 14%;
+    margin-top: 10%;
     margin-left: 10px;
     padding: 0px 60px;
     float: right;
@@ -82,14 +91,8 @@ h2 {
 
 .hero-right-half button {
     float: left;
-    border: 1px solid #0084B2;
+    border-color: #0084B2;
     color: #0084B2;
-    font-weight: bold;
-    background-color: #ffffff;
-    font-family: "Open Sans", "Helvetica Neue", sans-serif;
-    padding: 8px;
-    font-size: 13px;
-    cursor: pointer;
 }
 
 .auth-right-footer span {
@@ -97,15 +100,18 @@ h2 {
     line-height: 3;
 }
 
-.hero-right-half .error-text {
-    display: none;
-    line-height: 3.2;
-    color: red;
+.hero-right-half .error {
     float: none;
+    margin-top: 15px;
+    margin-bottom: -5px;
+    line-height: 1.2;
+    color: red;
+
 }
 
 .meta-bar {
-    height: 30px;
+    height: 45px;
+    padding-top: 5px;
     border-bottom: 1px solid #EFEFEF;
     box-shadow: 0px 5px 5px #EFEFEF;
     text-align: center;
@@ -113,25 +119,89 @@ h2 {
 
 .meta-bar .home-link {
     float: left;
+    margin-left: 25px;
+    padding-top: 5px;
+}
+
+.meta-bar .home-link a {
+    color: #000000;
+}
+
+.meta-bar .home-link img {
+    float: left;
+}
+
+.meta-bar .home-link span {
+    float: left;
+    margin-left: 10px;
+    padding-top: 10px;
 }
 
 .meta-bar .logo {
     width: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+    display: inline;
+    margin-left: 35px;
 }
 
 .meta-bar .user-meta {
     float: right;
+    margin-right: 25px;
+    padding-top: 5px;
+}
+
+.meta-bar .user-meta .placeholder-image {
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    background-color: #999999;
+}
+
+.meta-bar .user-meta span {
+    float: left;
+    padding-top: 5px;
 }
 
 .user-content-container {
     margin-left: auto;
     margin-right: auto;
-    width: 66%;
+    width: 600px;
     text-align: center;
     margin-top: 20px;
+}
+
+.user-content-container .post-input {
+    width: 80%;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.user-content-container .post-input textarea {
+    width: 100%;
+    margin-bottom: 30px;
+    border: none;
+    resize: none;
+    font-size: 20px;
+}
+
+.user-content-container .post-input .footer {
+    overflow: auto;
+}
+
+.user-content-container .post-input .footer span {
+    float: left;
+}
+
+.user-content-container .post-input .footer button {
+    float: right;
+}
+
+.latest-posts-header {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-top: 1px solid #EFEFEF;
+    border-bottom: 1px solid #EFEFEF;
 }
 
 .user-content-container .profile-image {
@@ -154,4 +224,63 @@ h2 {
 .user-content-container .nav ul li {
     display: inline;
     margin-right: 20px;
+}
+
+.post-wrapper {
+    height: 90px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #efefef;
+    text-align: left;
+}
+
+.post-wrapper .author-image-container {
+    float: left;
+    width: 50px;
+    height: 100%;
+    margin-right: 15px;
+}
+
+.post-wrapper .author-image {
+    width: 50px;
+    height: 50px;
+    background-color: #EFEFEF;
+}
+
+.post-wrapper .author-name {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.post-wrapper .author-name a,
+.post-wrapper .post-footer a
+{
+    color: #000000;
+}
+
+.post-wrapper .author-name a:hover,
+.post-wrapper .post-footer a:hover
+{
+    color: #0084B2;
+}
+
+.post-wrapper .post-content {
+    height: 3em;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.post-wrapper .post-footer {
+    font-size: 11px;
+}
+
+.post-wrapper .post-footer .post-date {
+    display: inline;
+    margin-right: 5px;
+}
+
+.post-wrapper .post-footer .delete {
+    display: inline;
+    margin-left: 5px;
 }

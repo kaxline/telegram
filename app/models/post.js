@@ -11,19 +11,31 @@ Post.reopenClass({
     {
       id: 4,
       content: 'Body of post 1',
-      author: 1,
+      author: 'kaxline',
+      createdAt: new Date()
+    },
+    {
+      id: 7,
+      content: 'Bleep blop bloop',
+      author: 'kaxline',
+      createdAt: new Date()
+    },
+    {
+      id: 8,
+      content: 'Some stuff',
+      author: 'kaxline',
       createdAt: new Date()
     },
     {
       id: 5,
       content: 'Body of post 2',
-      author: 2,
+      author: 'jsmith',
       createdAt: new Date()
     },
     {
       id: 6,
       content: 'Body of post 3',
-      author: 3,
+      author: 'sjackson',
       createdAt: new Date()
     }
   ]

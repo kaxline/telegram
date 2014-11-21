@@ -3,7 +3,9 @@
 {{input type="text" placeholder="Enter your username ..." value=id action='login'}}
 {{input type="password" placeholder="Enter your password ..." value=password action='login'}}
 
-<span class="error-text"></span>
+{{#if errorMsg}}
+  <div class="error">{{errorMsg}}</div>
+{{/if}}
 
 <div class="auth-right-footer">
     <button {{action 'login' target='controller'}}>Log in</button>

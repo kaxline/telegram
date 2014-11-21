@@ -1,19 +1,26 @@
-<div class="post-input">
-  {{input type=text}}
-    <div class="footer">
-        <span>140 Characters</span>
-        <button type="button">Publish</button>
+{{meta-bar user=controller.session.user}}
+
+<div class="user-content-container">
+
+    <div class="post-input">
+      {{textarea rows='3' maxlength='140' placeholder="What's happening?" value=msgText}}
+        <div class="footer">
+            <span>{{msgLengthRemaining}} Characters</span>
+            <button {{action 'publish'}}>Publish</button>
+        </div>
     </div>
+
+    <div class="latest-posts-header">
+        <h2>Latest Posts</h2>
+    </div>
+
+    <div class="latest-posts-container">
+      {{#each post in model}}
+        {{post-list-item post=post}}
+      {{/each}}
+    </div>
+
 </div>
 
-<div class="latest-posts-header">
-    <h2>Latest Posts</h2>
-</div>
 
-<div class="latest-posts-container">
-    {{controller.session.user.name}}
-  {{#each post in model.posts}}
-    {{post-list-item}}
-  {{/each}}
-</div>
 
