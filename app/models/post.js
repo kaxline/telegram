@@ -12,19 +12,19 @@ Post.reopenClass({
       id: 4,
       content: 'Body of post 1',
       author: 'kaxline',
-      createdAt: new Date()
+      createdAt: new Date('01/14/14')
     },
     {
       id: 7,
       content: 'Bleep blop bloop',
       author: 'kaxline',
-      createdAt: new Date()
+      createdAt: new Date('11/21/14')
     },
     {
       id: 8,
       content: 'Some stuff',
       author: 'kaxline',
-      createdAt: new Date()
+      createdAt: new Date('11/22/14')
     },
     {
       id: 5,

@@ -263,6 +263,7 @@ button {
 .post-wrapper .post-footer a:hover
 {
     color: #0084B2;
+    cursor: pointer;
 }
 
 .post-wrapper .post-content {

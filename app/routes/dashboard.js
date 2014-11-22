@@ -9,16 +9,25 @@ export default Ember.Route.extend({
     //}
   },
 
-  model: function () {
+  beforeModel: function () {
+    var self = this;
     // these lines are for testing only
     var testUser = this.store.find('user', 'kaxline');
-    this.get('session').set('user', testUser);
+    return testUser.then(function (fulfilledUser) {
+      self.set('session.user', fulfilledUser);
+    });
     //
+  },
 
-    // using 'kaxline' for testing but should be dynamic
-    return this.store.find('post', {author: 'kaxline'});
+  model: function () {
+    var user = this.get('session.user');
+    var userName = user.get('id');
 
-
+    return this.store.filter('post', {author: userName}, function (post) {
+      return post.get('author').then(function (fulfilledAuthor) {
+        return fulfilledAuthor.get('id') === userName;
+      });
+    });
   },
 
   renderTemplate: function () {
