@@ -1,5 +1,3 @@
-<ul>
-  {{#each user in model}}
-      <li>{{user.firstName}}</li>
-  {{/each}}
-</ul>
+{{#each user in controller}}
+    {{user-list-item user=user}}
+{{/each}}

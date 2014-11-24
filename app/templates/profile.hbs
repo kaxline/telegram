@@ -1,26 +1,28 @@
+{{meta-bar user=controller.session.user}}
 
+<div class="user-content-container">
 
     <div class="profile-image">
 
     </div>
 
     <div class="user-info">
-        <span>{{fullName}}</span>
-        <span>@{{username}}</span>
+        <span class="name">{{model.name}}</span>
+        <span class="id">@{{model.id}}</span>
+        <button {{action 'follow'}}>Follow</button>
     </div>
 
-    <button class="button">Follow</button>
 
     <div class="nav">
         <ul>
             <li>
-              {{#link-to "user.posts"}}Posts{{/link-to}}
+              {{#link-to "profile.posts" activeClass='selected'}}Posts{{/link-to}}
             </li>
             <li>
-              {{#link-to "user.following"}}Following{{/link-to}}
+              {{#link-to "profile.following" activeClass='selected'}}Following{{/link-to}}
             </li>
             <li>
-              {{#link-to "user.followers"}}Followers{{/link-to}}
+              {{#link-to "profile.followers" activeClass='selected'}}Followers{{/link-to}}
             </li>
         </ul>
     </div>
@@ -28,3 +30,5 @@
     <div class="nav-content">
       {{outlet}}
     </div>
+</div>
+

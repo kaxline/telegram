@@ -9,30 +9,14 @@ export default Ember.ArrayController.extend({
         author: self.get('session.user'),
         createdAt: new Date()
       });
-      alert(newPost.get('author').get('id'));
       newPost.save();
       self.set('msgText', null);
     }
   },
 
-  //reverseChronSort: ['createdAt:desc'],
-  //
-  //reverseChronPosts: Ember.computed.sort('model', 'reverseChronSort'),
-
-  //reverseChronPosts: function () {
-  //  return this.get('arrangedContent');
-  //},
-
-   sortProperties: ['createdAt'],
+  sortProperties: ['createdAt'],
 
   sortAscending: false,
-
-  //sortFunction: function (a,b) {
-  //  var dateA = new Date(a);
-  //  var dateB = new Date(b);
-  //  console.log(dateA < dateB ? -1 : 1);
-  //  return dateA < dateB ? -1 : 1;
-  //},
 
   msgLengthRemaining: function () {
     var msgText = this.get('msgText');

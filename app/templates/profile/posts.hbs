@@ -1,3 +1,3 @@
-{{#each post in model}}
-  <span>{{post.content}}</span>
+{{#each post in controller}}
+  {{post-list-item post=post}}
 {{/each}}

@@ -149,6 +149,14 @@ button {
     padding-top: 5px;
 }
 
+.meta-bar .user-meta a {
+    color: #000000;
+}
+
+.meta-bar .user-meta a:hover {
+    color: #0084B2;
+}
+
 .meta-bar .user-meta .placeholder-image {
     float: left;
     width: 30px;
@@ -217,6 +225,30 @@ button {
     display: block;
 }
 
+.user-info {
+    margin-bottom: 20px;
+}
+
+.user-info .name {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.user-info .id {
+    margin-bottom: 20px;
+}
+
+.user-info button {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.user-content-container .nav {
+    margin-bottom: 30px;
+    border-top: 1px solid #EFEFEF;
+    border-bottom: 1px solid #EFEFEF;
+}
+
 .user-content-container .nav ul {
     list-style-type: none;
 }
@@ -224,9 +256,20 @@ button {
 .user-content-container .nav ul li {
     display: inline;
     margin-right: 20px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-.post-wrapper {
+.user-content-container .selected {
+    padding-bottom: 10px;
+    border-bottom: 2px solid #0084B2;
+    color: inherit;
+    cursor: default;
+    text-decoration: none;
+}
+
+.post-list-item-wrapper,
+.user-list-item-wrapper {
     height: 90px;
     margin-bottom: 20px;
     padding-bottom: 15px;
@@ -234,54 +277,73 @@ button {
     text-align: left;
 }
 
-.post-wrapper .author-image-container {
+.post-list-item-wrapper .author-image-container,
+.user-list-item-wrapper .user-image-container {
     float: left;
     width: 50px;
     height: 100%;
     margin-right: 15px;
 }
 
-.post-wrapper .author-image {
+.post-list-item-wrapper .author-image,
+.user-list-item-wrapper .user-image {
     width: 50px;
     height: 50px;
     background-color: #EFEFEF;
 }
 
-.post-wrapper .author-name {
+.post-list-item-wrapper .author-name,
+.user-list-item-wrapper .user-name {
     margin-bottom: 10px;
     font-weight: bold;
     font-size: 13px;
 }
 
-.post-wrapper .author-name a,
-.post-wrapper .post-footer a
+.post-list-item-wrapper .author-name a,
+.post-list-item-wrapper .post-footer a,
+.user-list-item-wrapper .user-name a
 {
     color: #000000;
 }
 
-.post-wrapper .author-name a:hover,
-.post-wrapper .post-footer a:hover
+.post-list-item-wrapper .author-name a:hover,
+.post-list-item-wrapper .post-footer a:hover,
+.user-list-item-wrapper .user-name a:hover
 {
     color: #0084B2;
     cursor: pointer;
+    text-decoration: none;
 }
 
-.post-wrapper .post-content {
+.post-list-item-wrapper .post-content {
     height: 3em;
     margin-bottom: 10px;
     font-size: 13px;
 }
 
-.post-wrapper .post-footer {
+.post-list-item-wrapper .post-footer {
     font-size: 11px;
 }
 
-.post-wrapper .post-footer .post-date {
+.post-list-item-wrapper .post-footer .post-date {
     display: inline;
     margin-right: 5px;
 }
 
-.post-wrapper .post-footer .delete {
+.post-list-item-wrapper .post-footer .delete {
     display: inline;
     margin-left: 5px;
 }
+
+.user-list-item-wrapper {
+    height: 55px;
+}
+
+.user-list-item-wrapper .user-name {
+    float: left;
+}
+
+.user-list-item-wrapper button {
+    float: right;
+}
+

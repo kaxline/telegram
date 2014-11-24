@@ -1,0 +1,16 @@
+<div class="user-list-item-wrapper">
+    <div class="user-image-container">
+        <div class="user-image"></div>
+    </div>
+
+    <div class="user-name">
+      {{#link-to 'profile' user.id}}
+        {{user.name}}
+      {{/link-to}}
+    </div>
+
+
+    <button class="follow" {{action 'follow'}}>Follow</button>
+
+
+</div>

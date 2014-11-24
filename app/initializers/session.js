@@ -14,7 +14,7 @@ export function initialize(container, app) {
   app.inject('route', 'session', 'session:main');
   app.inject('controller', 'session', 'session:main');
 
-};
+}
 
 export default {
   name: 'session',
