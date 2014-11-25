@@ -9,7 +9,11 @@
     <div class="user-info">
         <span class="name">{{model.name}}</span>
         <span class="id">@{{model.id}}</span>
-        <button {{action 'follow'}}>Follow</button>
+      {{#if isLoggedIn}}
+          <button {{action 'logout'}}>Logout</button>
+      {{else}}
+          <button {{action 'follow'}}>Follow</button>
+      {{/if}}
     </div>
 
 

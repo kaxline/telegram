@@ -16,7 +16,7 @@
 
     <div class="latest-posts-container">
       {{#each post in controller}}
-        {{post-list-item post=post}}
+        {{post-list-item post=post loggedInUser=controller.session.user}}
       {{/each}}
     </div>
 

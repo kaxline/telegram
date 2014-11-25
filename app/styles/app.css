@@ -207,7 +207,6 @@ button {
 
 .latest-posts-header {
     margin-top: 30px;
-    margin-bottom: 30px;
     border-top: 1px solid #EFEFEF;
     border-bottom: 1px solid #EFEFEF;
 }
@@ -270,15 +269,30 @@ button {
 
 .post-list-item-wrapper,
 .user-list-item-wrapper {
-    height: 90px;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
+    position: relative;
+    padding: 15px 20px;
+    overflow: auto;
     border-bottom: 1px solid #efefef;
     text-align: left;
 }
 
+.post-list-item-wrapper .display-repost {
+    padding-left: 35px;
+    padding-bottom: 10px;
+    font-size: 13px;
+    color: #999;
+
+}
+
+.post-list-item-wrapper .display-repost img {
+    width: 15px;
+    margin-right: 10px;
+}
+
 .post-list-item-wrapper .author-image-container,
-.user-list-item-wrapper .user-image-container {
+.post-list-item-wrapper .icon-repost,
+.user-list-item-wrapper .user-image-container
+{
     float: left;
     width: 50px;
     height: 100%;
@@ -290,6 +304,10 @@ button {
     width: 50px;
     height: 50px;
     background-color: #EFEFEF;
+}
+
+.post-list-item-wrapper .post-info-container {
+    float: left;
 }
 
 .post-list-item-wrapper .author-name,
@@ -330,9 +348,40 @@ button {
     margin-right: 5px;
 }
 
+.post-list-item-wrapper .post-footer .repost {
+    display: inline;
+    margin: 0 5px;
+}
+
 .post-list-item-wrapper .post-footer .delete {
     display: inline;
     margin-left: 5px;
+}
+
+.post-list-item-wrapper .repost-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #efefef;
+    font-size: 13px;
+}
+
+.post-list-item-wrapper .repost-overlay a {
+    cursor: pointer;
+}
+
+.post-list-item-wrapper .repost-overlay .icon-repost {
+    padding-top: 35px;
+    padding-left: 20px;
+}
+
+.post-list-item-wrapper .repost-overlay .repost-prompt {
+    display: block;
+    padding-top: 40px;
+    padding-bottom: 5px;
 }
 
 .user-list-item-wrapper {

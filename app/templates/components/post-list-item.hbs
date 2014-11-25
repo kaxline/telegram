@@ -1,34 +1,58 @@
 <div class="post-list-item-wrapper">
+
+    {{#if hover}}
+      <div class="repost-overlay">
+          <div class="icon-repost">
+              <img src="img/icon-repost.jpg" />
+          </div>
+          <span class="repost-prompt">Repost this to your followers?</span>
+          <a {{action 'repost'}}>Yes</a> &#183; <a {{action 'hideRepost'}}>No</a>
+      </div>
+
+    {{/if}}
+
+    {{#if hasReposts}}
+      <div class="display-repost">
+          <img src="img/icon-repost.jpg"/>
+          <span>Reposted by {{repostName}}</span>
+      </div>
+    {{/if}}
     <div class="author-image-container">
         <div class="author-image"></div>
     </div>
 
-    <div class="author-name">
-      {{#link-to 'profile' post.author.id}}
-        {{post.author.name}}
-      {{/link-to}}
-    </div>
-
-
-    <div class="post-content">{{post.content}}</div>
-
-    <div class="post-footer">
-
-      <div class="post-date">
-        {{#link-to 'profile.post' post.author.id post.id}}
-          {{format-date post.createdAt}}
-        {{/link-to}}
-      </div>
-
-      <span>&#183;</span>
-
-        <div class="delete">
-            <a {{action 'delete'}}>Delete</a>
+    <div class="post-info-container">
+        <div class="author-name">
+          {{#link-to 'profile' post.author.id}}
+            {{post.author.name}}
+          {{/link-to}}
         </div>
 
+        <div class="post-content">{{post.content}}</div>
+
+        <div class="post-footer">
+
+            <div class="post-date">
+              {{#link-to 'post' post.author.id post.id}}
+                {{format-date post.createdAt}}
+              {{/link-to}}
+            </div>
+
+          {{#unless displayRepostOption}}
+              <span>&#183;</span>
+
+              <div class="repost">
+                  <a {{action 'showRepost'}}>Repost</a>
+              </div>
+          {{/unless}}
+
+            <span>&#183;</span>
+
+            <div class="delete">
+                <a {{action 'delete'}}>Delete</a>
+            </div>
+
+        </div>
     </div>
-
-
-
 
 </div>
