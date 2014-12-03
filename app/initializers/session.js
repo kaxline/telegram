@@ -9,7 +9,7 @@ export function initialize(container, app) {
     }.property('user')
   });
 
-  app.register('session:main', Session);
+  app.register('session:main', Session, {singleton: true});
 
   app.inject('route', 'session', 'session:main');
   app.inject('controller', 'session', 'session:main');

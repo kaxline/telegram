@@ -11,12 +11,20 @@
 
     {{/if}}
 
-    {{#if hasReposts}}
+    {{#if loggedInUserHasReposted}}
       <div class="display-repost">
           <img src="img/icon-repost.jpg"/>
-          <span>Reposted by {{repostName}}</span>
+          <span>Reposted</span>
       </div>
     {{/if}}
+
+    {{#if isRepost}}
+        <div class="display-repost">
+            <img src="img/icon-repost.jpg"/>
+            <span>Reposted by {{author.name}}</span>
+        </div>
+    {{/if}}
+
     <div class="author-image-container">
         <div class="author-image"></div>
     </div>
@@ -24,7 +32,7 @@
     <div class="post-info-container">
         <div class="author-name">
           {{#link-to 'profile' post.author.id}}
-            {{post.author.name}}
+            {{displayName}}
           {{/link-to}}
         </div>
 
@@ -32,25 +40,30 @@
 
         <div class="post-footer">
 
-            <div class="post-date">
-              {{#link-to 'post' post.author.id post.id}}
-                {{format-date post.createdAt}}
-              {{/link-to}}
+          <div class="post-date">
+            {{#link-to 'post' post.author.id post.id}}
+              {{format-date post.createdAt}}
+            {{/link-to}}
+          </div>
+
+          {{#if displayRepostOption}}
+            <span>&#183;</span>
+
+            <div class="repost">
+                <a {{action 'showRepost'}}>Repost</a>
             </div>
+          {{/if}}
 
-          {{#unless displayRepostOption}}
-              <span>&#183;</span>
-
-              <div class="repost">
-                  <a {{action 'showRepost'}}>Repost</a>
-              </div>
-          {{/unless}}
-
+          {{#if loggedInUserOwnsPost}}
             <span>&#183;</span>
 
             <div class="delete">
                 <a {{action 'delete'}}>Delete</a>
             </div>
+
+          {{/if}}
+
+
 
         </div>
     </div>

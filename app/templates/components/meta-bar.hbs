@@ -9,10 +9,16 @@
       <img src="img/telegram-logo-meta-bar.jpg" />
   </div>
   <div class="user-meta">
-    {{#link-to "profile" user.id}}
-        <div class="placeholder-image"></div>
-        <span>{{user.name}}</span>
-    {{/link-to}}
+    {{#if user}}
+      {{#link-to "profile" user.id}}
+          <div class="placeholder-image"></div>
+          <span>{{user.name}}</span>
+      {{/link-to}}
+    {{else}}
+      {{#link-to "auth.login"}}
+          <span>Login</span>
+      {{/link-to}}
+    {{/if}}
 
   </div>
 </div>

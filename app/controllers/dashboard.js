@@ -19,12 +19,7 @@ export default Ember.ArrayController.extend({
   sortAscending: false,
 
   msgLengthRemaining: function () {
-    var msgText = this.get('msgText');
-    var length = 0;
-    if (msgText) {
-      length = msgText.length;
-    }
-    return 140 - length;
+    return 140 - (this.get('msgText') || '').length;
   }.property('msgText')
 
 

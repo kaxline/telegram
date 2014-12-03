@@ -1,4 +1,4 @@
-{{meta-bar user=controller.session.user}}
+{{meta-bar user=session.user}}
 
 <div class="user-content-container">
 
@@ -16,7 +16,7 @@
 
     <div class="latest-posts-container">
       {{#each post in controller}}
-        {{post-list-item post=post loggedInUser=controller.session.user}}
+        {{post-list-item post=post loggedInUser=session.user store=store}}
       {{/each}}
     </div>
 

@@ -16,10 +16,10 @@ export default Ember.Controller.extend({
       }
       self.store.find('user', username).then(function (foundUser) {
         if (foundUser.get('password') === password) {
-          self.get('session').set('user', foundUser);
+          self.set('session.user', foundUser);
+          self.transitionToRoute('dashboard');
           self.set('id', null);
           self.set('password', null);
-          self.transitionToRoute('dashboard');
         } else {
           self.set('id', null);
           self.set('password', null);

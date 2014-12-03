@@ -1,5 +1,5 @@
-{{meta-bar user=controller.session.user}}
+{{meta-bar user=session.user}}
 
 <div class="user-content-container">
-    {{post-list-item post=model}}
+    {{post-list-item post=model loggedInUser=session.user store=store}}
 </div>

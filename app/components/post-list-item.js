@@ -9,36 +9,44 @@ export default Ember.Component.extend({
       this.set('hover', false);
     },
     repost: function () {
-      this.get('post.repostedBy').pushObject(this.get('loggedInUser'));
+      var self = this;
+      var post = self.get('post');
+      var newPost = this.store.createRecord('post', {
+        content: post.get('content'),
+        author: self.get('loggedInUser'),
+        createdAt: new Date(),
+        originalPost: post
+      });
+      newPost.save();
+      self.set('post.repostedByCurrentUser', true);
       this.send('hideRepost');
     }
   },
 
+  isRepost: function () {
+    var originalPost = this.get('originalPost') ? true : false;
+    return originalPost;
+  }.property('originalPost'),
+
+  displayName: function () {
+    return this.get('isRepost') ? this.get('originalPost.author.name') : this.get('post.author.name');
+  }.property('isRepost', 'post.author.name'),
+
   loggedInUserOwnsPost: function () {
     return this.get('loggedInUser.id') === this.get('post.author.id');
-  }.property('loggedInUser'),
+  }.property('loggedInUser', 'post.author.id'),
 
   loggedInUserHasReposted: function () {
-    var repostedBy = this.get('post.repostedBy');
-    var loggedInUserId = this.get('loggedInUser');
-    console.log(repostedBy.indexOf(loggedInUserId) !== -1);
-    return repostedBy.indexOf(loggedInUserId) !== -1;
-  }.property('post.repostedBy.length'),
-
-  hasReposts: function () {
-    console.log(this.get('post.repostedBy'));
-    return this.get('post.repostedBy').length;
-  }.property('post.repostedBy.length'),
+    return this.get('post.repostedByCurrentUser');
+  }.property('post.repostedByCurrentUser'),
 
   repostName: function () {
-    console.log(this.get('post.repostedBy'));
-    var firstRepostUser = this.get('post.repostedBy').get('firstObject');
-    return firstRepostUser.get('name');
-  }.property('post.repostedBy'),
+    return this.get('loggedInUser.name');
+  }.property('post.repostedByCurrentUser'),
 
   displayRepostOption: function () {
-    return this.get('loggedInUserOwnsPost') || this.get('loggedInUserHasReposted');
-  }.property('loggedInUserOwnsPost', 'loggedInUserHasReposted')
-
+    var repostedByCurrentUser = !this.get('post.repostedByCurrentUser') ? false : true;
+    return !this.get('loggedInUserOwnsPost') || repostedByCurrentUser;
+  }.property('loggedInUserOwnsPost', 'post.repostedByCurrentUser')
 
 });

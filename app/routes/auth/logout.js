@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  activate: function () {
-    var user = this.get('session.user');
-    if (!user) {
+  redirect: function () {
+    var loggedInUser = this.get('session.user');
+    if (!loggedInUser) {
       this.transitionTo('auth.login');
     }
   }
