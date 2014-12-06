@@ -21,7 +21,7 @@
     {{#if isRepost}}
         <div class="display-repost">
             <img src="img/icon-repost.jpg"/>
-            <span>Reposted by {{author.name}}</span>
+            <span>Reposted by {{post.author.name}}</span>
         </div>
     {{/if}}
 
@@ -42,7 +42,7 @@
 
           <div class="post-date">
             {{#link-to 'post' post.author.id post.id}}
-              {{format-date post.createdAt}}
+              {{format-date displayDate}}
             {{/link-to}}
           </div>
 

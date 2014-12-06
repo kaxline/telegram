@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
-  /* for testing only
+  ///* for testing only
 
   beforeModel: function () {
     var self = this;
@@ -12,7 +12,7 @@ export default Ember.Route.extend({
     });
   },
 
-  */
+  //*/
 
   redirect: function () {
     var loggedInUser = this.get('session.user');

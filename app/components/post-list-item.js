@@ -29,13 +29,17 @@ export default Ember.Component.extend({
   },
 
   isRepost: function () {
-    var originalPost = this.get('originalPost') ? true : false;
+    var originalPost = this.get('post.originalPost.content') ? true : false;
     return originalPost;
-  }.property('originalPost'),
+  }.property('post.originalPost'),
 
   displayName: function () {
-    return this.get('isRepost') ? this.get('originalPost.author.name') : this.get('post.author.name');
-  }.property('isRepost', 'post.author.name'),
+    return this.get('post.originalPost.author.name') || this.get('post.author.name');
+  }.property('post.author.name'),
+
+  displayDate: function () {
+    return this.get('post.originalPost.createdAt') || this.get('post.createdAt');
+  }.property('post.createdAt'),
 
   loggedInUserOwnsPost: function () {
     return this.get('loggedInUser.id') === this.get('post.author.id');
