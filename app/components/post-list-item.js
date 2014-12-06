@@ -19,7 +19,12 @@ export default Ember.Component.extend({
       });
       newPost.save();
       self.set('post.repostedByCurrentUser', true);
-      this.send('hideRepost');
+      self.send('hideRepost');
+    },
+    deletePost: function () {
+      store.find('post', this.get('post.id')).then(function (foundPost) {
+        foundPost.destroyRecord();
+      });
     }
   },
 

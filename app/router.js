@@ -19,7 +19,7 @@ Router.map(function() {
     this.route('following');
     this.route('followers');
   });
-  this.route('post', {path: '/:user_id/post/:post_id'})
+  this.route('post', {path: '/:user_id/post/:post_id'});
 });
 
 export default Router;
