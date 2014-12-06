@@ -22,6 +22,7 @@ export default Ember.Component.extend({
       self.send('hideRepost');
     },
     deletePost: function () {
+      var store = this.get('store');
       store.find('post', this.get('post.id')).then(function (foundPost) {
         foundPost.destroyRecord();
       });
