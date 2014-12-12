@@ -42,6 +42,14 @@ export default Ember.Component.extend({
     return this.get('post.originalPost.createdAt') || this.get('post.createdAt');
   }.property('post.createdAt'),
 
+  userLink: function () {
+    return this.get('post.originalPost.author.id') || this.get('post.author.id');
+  }.property('post.originalPost'),
+
+  postLink: function () {
+    return this.get('post.originalPost.id') || this.get('post.id');
+  }.property('post.originalPost'),
+
   loggedInUserOwnsPost: function () {
     return this.get('loggedInUser.id') === this.get('post.author.id');
   }.property('loggedInUser', 'post.author.id'),

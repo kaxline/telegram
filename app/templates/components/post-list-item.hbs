@@ -31,7 +31,7 @@
 
     <div class="post-info-container">
         <div class="author-name">
-          {{#link-to 'profile' post.author.id}}
+          {{#link-to 'profile' userLink}}
             {{displayName}}
           {{/link-to}}
         </div>
@@ -41,7 +41,7 @@
         <div class="post-footer">
 
           <div class="post-date">
-            {{#link-to 'post' post.author.id post.id}}
+            {{#link-to 'post' userLink postLink}}
               {{format-date displayDate}}
             {{/link-to}}
           </div>

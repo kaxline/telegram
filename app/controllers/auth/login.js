@@ -29,6 +29,7 @@ export default Ember.Controller.extend({
         self.set('id', null);
         self.set('password', null);
         self.set('errorMsg', 'No user found with that name.');
+        console.log(err);
       });
     }
   }
