@@ -44,11 +44,11 @@ export default Ember.Component.extend({
 
   userLink: function () {
     return this.get('post.originalPost.author.id') || this.get('post.author.id');
-  }.property('post.originalPost'),
+  }.property('post.originalPost', 'post.author.id'),
 
   postLink: function () {
     return this.get('post.originalPost.id') || this.get('post.id');
-  }.property('post.originalPost'),
+  }.property('post.originalPost', 'post.id'),
 
   loggedInUserOwnsPost: function () {
     return this.get('loggedInUser.id') === this.get('post.author.id');

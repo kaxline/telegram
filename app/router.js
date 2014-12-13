@@ -14,12 +14,13 @@ Router.map(function() {
     this.route('logout');
   });
   this.route('dashboard');
+  this.route('post', {path: '/:user_id/post/:post_id'});
   this.resource('profile', {path: '/:user_id'}, function () {
     this.route('posts', {path: '/'});
     this.route('following');
     this.route('followers');
   });
-  this.route('post', {path: '/:user_id/post/:post_id'});
+  this.route('pageNotFound', {path: '/*path'});
 });
 
 export default Router;
