@@ -4,9 +4,9 @@ export default Ember.Controller.extend({
   actions: {
     login: function () {
       var self = this;
-      var username = this.get('id');
+      var userId = this.get('id');
       var password = this.get('password');
-      if (!username) {
+      if (!userId) {
         this.set('errorMsg', 'Please enter a username.');
         return;
       }
@@ -14,17 +14,16 @@ export default Ember.Controller.extend({
         this.set('errorMsg', 'Please enter a password.');
         return;
       }
-      self.store.find('user', username).then(function (foundUser) {
-        if (foundUser.get('password') === password) {
-          self.set('session.user', foundUser);
-          self.transitionToRoute('dashboard');
-          self.set('id', null);
-          self.set('password', null);
-        } else {
-          self.set('id', null);
-          self.set('password', null);
-          self.set('errorMsg', 'Username and password do not match.');
+      self.store.find('user', {userId: userId, password: password}).then(function (foundUserArray) {
+        if (!foundUserArray.get('length')) {
+          self.set('errorMsg', 'No user found with that username.');
+          return;
         }
+        var foundUser = foundUserArray.get('firstObject');
+        self.set('session.user', foundUser);
+        self.transitionToRoute('dashboard');
+        self.set('id', null);
+        self.set('password', null);
       }, function (err) {
         self.set('id', null);
         self.set('password', null);

@@ -42,13 +42,13 @@ export default Ember.Component.extend({
     return this.get('post.originalPost.createdAt') || this.get('post.createdAt');
   }.property('post.createdAt'),
 
-  userLink: function () {
-    return this.get('post.originalPost.author.id') || this.get('post.author.id');
-  }.property('post.originalPost', 'post.author.id'),
+  postAuthor: function () {
+    return this.get('post.originalPost.author') || this.get('post.author');
+  }.property('post.originalPost', 'post.author'),
 
   postLink: function () {
-    return this.get('post.originalPost.id') || this.get('post.id');
-  }.property('post.originalPost', 'post.id'),
+    return this.get('post.originalPost') || this.get('post');
+  }.property('post.originalPost', 'post'),
 
   loggedInUserOwnsPost: function () {
     return this.get('loggedInUser.id') === this.get('post.author.id');

@@ -14,13 +14,6 @@ export default Ember.ObjectController.extend({
       this.transitionToRoute('dashboard');
     }
   },
-  username: function () {
-    var id = this.get('id');
-    if (id.indexOf('fixture-') !== -1) {
-      id = null;
-    }
-    return id;
-  }.property('id'),
 
   isFormComplete: function () {
     var self = this;
