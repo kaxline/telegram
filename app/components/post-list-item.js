@@ -9,24 +9,16 @@ export default Ember.Component.extend({
       this.set('hover', false);
     },
     repost: function () {
-      var self = this;
-      var post = self.get('post');
-      var newPost = this.store.createRecord('post', {
-        content: post.get('content'),
-        author: self.get('loggedInUser'),
-        createdAt: new Date(),
-        originalPost: post
-      });
-      newPost.save();
-      self.set('post.repostedByCurrentUser', true);
-      self.send('hideRepost');
+      var post = this.get('post');
+      var loggedInUser = this.get('loggedInUser')
+      this.sendAction('repost', post, loggedInUser);
+      this.send('hideRepost');
     },
-    deletePost: function () {
-      var store = this.get('store');
-      store.find('post', this.get('post.id')).then(function (foundPost) {
-        foundPost.destroyRecord();
-      });
+    delete: function () {
+      var post = this.get('post');
+      this.sendAction('deletePost', post);
     }
+
   },
 
   isRepost: function () {

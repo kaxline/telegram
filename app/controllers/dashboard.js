@@ -4,9 +4,7 @@ export default Ember.ArrayController.extend({
   actions: {
     publish: function () {
       var self = this;
-      var newId = self.get('length') + 5;
       var newPost = this.store.createRecord('post', {
-        id: newId,
         content: self.get('msgText'),
         author: self.get('session.user'),
         createdAt: new Date()

@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
         this.set('errorMsg', 'Please enter a password.');
         return;
       }
-      self.store.find('user', {userId: userId, password: password}).then(function (foundUserArray) {
+      self.store.find('user', {userId: userId, password: password, action: 'login'}).then(function (foundUserArray) {
         if (!foundUserArray.get('length')) {
           self.set('errorMsg', 'No user found with that username.');
           return;
