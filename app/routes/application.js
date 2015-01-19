@@ -21,7 +21,11 @@ export default Ember.Route.extend({
         createdAt: new Date(),
         originalPost: originalPost
       });
-      newPost.save();
+      newPost.get('author').then(function (fulfilledAuthor) {
+        newPost.get('originalPost').then(function (fulfilledPost) {
+          newPost.save();
+        });
+      })
       //TODO reconcile how to handle this with data on the server
       originalPost.set('repostedByCurrentUser', true);
     },
