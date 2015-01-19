@@ -9,9 +9,7 @@ export default Ember.Component.extend({
       this.set('hover', false);
     },
     repost: function () {
-      var post = this.get('post');
-      var loggedInUser = this.get('loggedInUser')
-      this.sendAction('repost', post, loggedInUser);
+      this.sendAction('repost', this.get('post'));
       this.send('hideRepost');
     },
     delete: function () {
