@@ -22,15 +22,15 @@ export default Ember.Component.extend({
   isRepost: function () {
     var originalPost = this.get('post.originalPost.content') ? true : false;
     return originalPost;
-  }.property('post.originalPost'),
+  }.property('post.originalPost.content'),
 
   displayName: function () {
     return this.get('post.originalPost.author.name') || this.get('post.author.name');
-  }.property('post.author.name'),
+  }.property('post.originalPost.author.name', 'post.author.name'),
 
   displayDate: function () {
     return this.get('post.originalPost.createdAt') || this.get('post.createdAt');
-  }.property('post.createdAt'),
+  }.property('post.originalPost.createdAt', 'post.createdAt'),
 
   postAuthor: function () {
     return this.get('post.originalPost.author') || this.get('post.author');
@@ -42,14 +42,10 @@ export default Ember.Component.extend({
 
   loggedInUserOwnsPost: function () {
     return this.get('loggedInUser.id') === this.get('post.author.id');
-  }.property('loggedInUser', 'post.author.id'),
+  }.property('loggedInUser.id', 'post.author.id'),
 
   loggedInUserHasReposted: function () {
     return this.get('post.repostedByCurrentUser');
-  }.property('post.repostedByCurrentUser'),
-
-  repostName: function () {
-    return this.get('loggedInUser.name');
   }.property('post.repostedByCurrentUser'),
 
   displayRepostOption: function () {

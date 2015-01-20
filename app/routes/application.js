@@ -16,16 +16,20 @@ export default Ember.Route.extend({
     repost: function (originalPost) {
       var self = this;
       var newPost = this.store.createRecord('post', {
-        content: originalPost.get('content'),
-        author: self.get('session.user'),
-        createdAt: new Date(),
-        originalPost: originalPost
+          content: originalPost.get('content')
+        , author: self.get('session.user')
+        , originalAuthorName: originalPost.get('author.id')
+        //, originalAuthor: originalPost.get('author')
+        , createdAt: new Date()
+        , originalPost: originalPost
       });
       newPost.get('author').then(function (fulfilledAuthor) {
-        newPost.get('originalPost').then(function (fulfilledPost) {
-          newPost.save();
+        newPost.get('originalAuthor').then(function (fulfilledOriginalAuthor) {
+          newPost.get('originalPost').then(function (fulfilledPost) {
+            newPost.save();
+          });
         });
-      })
+      });
       //TODO reconcile how to handle this with data on the server
       originalPost.set('repostedByCurrentUser', true);
     },
