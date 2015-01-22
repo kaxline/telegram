@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
           self.set('session.user', null);
           self.transitionToRoute('auth.login');
         }
-      )
+      );
     }
   },
 

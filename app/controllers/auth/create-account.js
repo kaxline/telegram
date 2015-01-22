@@ -3,15 +3,26 @@ import Ember from 'ember';
 export default Ember.ObjectController.extend({
   actions: {
     signup: function () {
+      var self = this;
       if (!this.get('isFormComplete')) {
         this.set('errorMsg', 'Please complete all fields.');
         return;
       }
       var user = this.model;
       user.set('id', this.get('username'));
-      user.save();
-      this.get('session').set('user', user);
-      this.transitionToRoute('dashboard');
+      $.getScript('/js/jquery-md5.js')
+        .done(function (data, textStatus, jqxhr) {
+          var encryptedPassword = $.md5(user.get('password'));
+          user.set('password', encryptedPassword);
+          user.save()
+            .then(function () {
+              self.set('session.user', user);
+              self.transitionToRoute('dashboard');
+            });
+        })
+        .fail(function (jqxhr, settings, exception) {
+          console.error(exception);
+        });
     }
   },
 

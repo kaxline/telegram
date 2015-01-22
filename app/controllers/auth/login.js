@@ -14,22 +14,33 @@ export default Ember.Controller.extend({
         this.set('errorMsg', 'Please enter a password.');
         return;
       }
-      self.store.find('user', {userId: userId, password: password, action: 'login'}).then(function (foundUserArray) {
-        if (!foundUserArray.get('length')) {
-          self.set('errorMsg', 'No user found with that username.');
-          return;
-        }
-        var foundUser = foundUserArray.get('firstObject');
-        self.set('session.user', foundUser);
-        self.transitionToRoute('dashboard');
-        self.set('id', null);
-        self.set('password', null);
-      }, function (err) {
-        self.set('id', null);
-        self.set('password', null);
-        self.set('errorMsg', 'No user found with that name.');
-        console.log(err);
-      });
+      $.getScript('/js/jquery-md5.js')
+        .done(function (data, textStatus, jqxhr) {
+          var encryptedPassword = $.md5(password);
+          self.store.find('user', {
+            userId: userId,
+            password: encryptedPassword,
+            action: 'login'
+          }).then(function (foundUserArray) {
+            if (!foundUserArray.get('length')) {
+              self.set('errorMsg', 'No user found with that username.');
+              return;
+            }
+            var foundUser = foundUserArray.get('firstObject');
+            self.set('session.user', foundUser);
+            self.transitionToRoute('dashboard');
+            self.set('id', null);
+            self.set('password', null);
+          }, function (err) {
+            self.set('id', null);
+            self.set('password', null);
+            self.set('errorMsg', 'No user found with that name.');
+            console.log(err);
+          });
+        })
+        .fail(function (jqxhr, settings, exception) {
+          console.error(exception);
+        });
     }
   }
 });
