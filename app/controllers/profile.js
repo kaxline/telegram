@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
     logout: function () {
       var self = this;
       $.get(
-        '/api/logout',
+        '/api/admin/logout',
         null,
         function (data, textStatus, jqXHR) {
           self.set('session.user', null);
