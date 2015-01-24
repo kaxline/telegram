@@ -17,16 +17,14 @@ export default Ember.Controller.extend({
       $.getScript('/js/jquery-md5.js')
         .done(function (data, textStatus, jqxhr) {
           var encryptedPassword = $.md5(password);
-          self.store.find('user', {
-            userId: userId,
-            password: encryptedPassword,
-            action: 'login'
-          }).then(function (foundUserArray) {
-            if (!foundUserArray.get('length')) {
-              self.set('errorMsg', 'No user found with that username.');
-              return;
-            }
-            var foundUser = foundUserArray.get('firstObject');
+
+          var user = self.store.createRecord('user', {
+              id: userId
+            , password: encryptedPassword
+            , operation: 'login'
+          });
+
+          user.save().then(function (foundUser) {
             self.set('session.user', foundUser);
             self.transitionToRoute('dashboard');
             self.set('id', null);
