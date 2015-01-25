@@ -4,7 +4,11 @@
 {{input type="password" placeholder="Enter your password ..." value=password action='login'}}
 
 {{#if errorMsg}}
-  <div class="error">{{errorMsg}}</div>
+    <div class="message error">{{errorMsg}}</div>
+{{/if}}
+
+{{#if successMsg}}
+    <div class="message success">{{successMsg}}</div>
 {{/if}}
 
 <div class="auth-right-footer">

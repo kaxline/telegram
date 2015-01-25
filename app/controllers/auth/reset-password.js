@@ -4,19 +4,26 @@ export default Ember.Controller.extend({
   actions: {
     passwordReset: function () {
       var self = this;
-      $.ajax({
-        url: '/api/admin/password-reset',
-        data: {
-          email: this.get('email')
-        }
-      })
-        .done(function (data, textStatus, jqxhr) {
-          console.log('email sent');
+      self.setProperties({
+          successMsg: null
+        , errorMsg: null
+      });
+      var user = self.store.createRecord('user', {
+        email: self.get('email'),
+        operation: 'reset-password'
+      });
+
+      user.save().then(function () {
+        console.log('email sent');
+        self.set('successMsg', 'Email sent');
+        setTimeout(function () {
+          self.set('email', null);
           self.transitionToRoute('auth.login');
-        })
-        .fail(function () {
-          console.error('error sending email');
-        })
+        }, 2000);
+      }, function () {
+        console.error('error sending email');
+        self.set('errorMsg', 'Error sending email');
+      });
     }
   }
 });

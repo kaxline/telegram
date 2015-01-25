@@ -102,13 +102,23 @@ button {
     line-height: 3;
 }
 
-.hero-right-half .error {
+.hero-right-half .message {
     float: none;
     margin-top: 15px;
     margin-bottom: -5px;
     line-height: 1.2;
-    color: red;
+}
 
+.message.error {
+    color: #ff0000;
+}
+
+.message.info {
+    color: #0000ff;
+}
+
+.message.success {
+    color: #008000;
 }
 
 .meta-bar {

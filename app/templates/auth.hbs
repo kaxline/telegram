@@ -3,7 +3,9 @@
         <img src="img/postmark.png" class="postmark-image"/>
 
         <div class="hero-left-half">
-            <img src="img/telegram-logo.png"/>
+            {{#link-to "auth.login"}}
+                <img src="img/telegram-logo.png"/>
+            {{/link-to}}
         </div>
         <div class="hero-right-half">
           {{outlet}}
