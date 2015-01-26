@@ -14,10 +14,33 @@ export default Ember.Controller.extend({
           self.transitionToRoute('auth.login');
         }
       );
+    },
+    follow: function () {
+      var loggedInUser = this.get('session.user');
+      if (!loggedInUser) {
+        return this.transitionToRoute('auth.login');
+      }
+      var profileUser = this.get('model');
+      profileUser.set('operation', 'follow');
+      profileUser.save().then(function () {
+        console.log('user followed');
+      }, function () {
+        console.error('Error following user.');
+      });
     }
   },
 
   isLoggedIn: function () {
     return this.get('session.user') === this.get('model');
+  }.property('session.user'),
+
+  isFollowing: function () {
+    if (!this.get('session.user')) {
+      return false;
+    }
+    console.log(this.get('model.id'));
+    return this.store.find('user', {follows: this.get('model.id')}).then(function (response) {
+      console.log(response);
+    });
   }.property('session.user')
 });

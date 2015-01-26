@@ -21,7 +21,6 @@ Router.map(function() {
     this.route('followers');
   });
   this.route('pageNotFound', {path: '/*path'});
-  this.route('auth/login');
 });
 
 export default Router;

@@ -12,7 +12,11 @@
       {{#if isLoggedIn}}
           <button {{action 'logout'}}>Logout</button>
       {{else}}
+        {{#if isFollowing}}
+          <button>Following</button>
+        {{else}}
           <button {{action 'follow'}}>Follow</button>
+        {{/if}}
       {{/if}}
     </div>
 

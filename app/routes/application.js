@@ -35,6 +35,11 @@ export default Ember.Route.extend({
     },
     deletePost: function (post) {
       post.destroyRecord();
+    },
+    error: function (error, transition) {
+      console.log('application route error handling');
+      transition.abort();
+      this.transitionTo('pageNotFound');
     }
   }
 });
