@@ -9,8 +9,16 @@
       {{/link-to}}
     </div>
 
+  {{#if isLoggedIn}}
 
-    <button class="follow" {{action 'follow'}}>Follow</button>
+  {{else}}
+    {{#if isFollowing}}
+        <button {{action 'unfollow'}}>Following</button>
+    {{else}}
+        <button {{action 'follow'}}>Follow</button>
+    {{/if}}
+  {{/if}}
+
 
 
 </div>

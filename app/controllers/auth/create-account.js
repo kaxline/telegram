@@ -13,7 +13,10 @@ export default Ember.ObjectController.extend({
       $.getScript('/js/jquery-md5.js')
         .done(function (data, textStatus, jqxhr) {
           var encryptedPassword = $.md5(user.get('password'));
-          user.set('password', encryptedPassword);
+          user.setProperties({
+              password: encryptedPassword
+            , operation: 'signup'
+          });
           user.save()
             .then(function () {
               self.set('session.user', user);

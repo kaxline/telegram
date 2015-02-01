@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   beforeModel: function () {
     var route = this;
-    var promise = this.store.find('user', {isAuthenticated: true});
+    var promise = this.store.find('user', {operation: 'isAuthenticated'});
     return promise.then(function (users) {
       if (users && users.get('length') > 0) {
         var user = users.get('firstObject');
@@ -39,7 +39,43 @@ export default Ember.Route.extend({
     error: function (error, transition) {
       console.log('application route error handling');
       transition.abort();
-      this.transitionTo('pageNotFound');
+      this.transitionTo('pageNotFound', 'Error handling route.');
+    },
+    logout: function () {
+      console.log('logout');
+      var self = this;
+      var loggedInUser = self.get('session.user');
+      $.get(
+        '/api/users/logout',
+        null,
+        function (data, textStatus, jqXHR) {
+          self.store.unloadRecord(loggedInUser);
+          self.set('session.user', null);
+          self.transitionTo('auth.login');
+        }
+      );
+    },
+    follow: function (user) {
+      console.log('follow');
+      var loggedInUser = this.get('session.user');
+      if (!loggedInUser) {
+        return this.transitionTo('auth.login');
+      }
+      user.set('operation', 'follow');
+      user.save().then(function () {
+        console.log('user followed');
+      }, function () {
+        console.error('Error following user.');
+      });
+    },
+    unfollow: function (user) {
+      var self = this;
+      user.set('operation', 'unfollow');
+      user.save().then(function () {
+        console.log('user unfollowed');
+      }, function () {
+        console.error('Error unfollowing user.');
+      });
     }
   }
 });

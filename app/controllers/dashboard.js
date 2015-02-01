@@ -14,6 +14,7 @@ export default Ember.ArrayController.extend({
         self.set('msgText', null);
       });
     }
+
   },
 
   sortProperties: ['createdAt'],

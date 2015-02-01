@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
       });
       var user = self.store.createRecord('user', {
         email: self.get('email'),
-        operation: 'reset-password'
+        operation: 'passwordReset'
       });
 
       user.save().then(function () {

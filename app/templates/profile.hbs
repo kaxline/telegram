@@ -13,9 +13,9 @@
           <button {{action 'logout'}}>Logout</button>
       {{else}}
         {{#if isFollowing}}
-          <button>Following</button>
+          <button {{action 'unfollow' model}}>Following</button>
         {{else}}
-          <button {{action 'follow'}}>Follow</button>
+          <button {{action 'follow' model}}>Follow</button>
         {{/if}}
       {{/if}}
     </div>
