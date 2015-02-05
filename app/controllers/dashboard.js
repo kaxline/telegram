@@ -10,9 +10,13 @@ export default Ember.ArrayController.extend({
         createdAt: new Date()
       });
       newPost.get('author').then(function () {
-        newPost.save();
-        self.set('msgText', null);
+        newPost.save().then(function () {
+          self.get('model').addObject(newPost);
+          self.set('msgText', null);
+        });
+
       });
+
     }
 
   },

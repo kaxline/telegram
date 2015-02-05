@@ -9,23 +9,21 @@ export default Ember.Component.extend({
       this.set('hover', false);
     },
     repost: function () {
-      this.sendAction('repost', this.get('post'));
+      this.sendAction('repost', this.get('post'), this.get('model'));
       this.send('hideRepost');
     },
     delete: function () {
-      var post = this.get('post');
-      this.sendAction('deletePost', post);
+      this.sendAction('deletePost', this.get('post'), this.get('model'));
     }
 
   },
 
   isRepost: function () {
-    var originalPost = this.get('post.originalPost.content') ? true : false;
-    return originalPost;
-  }.property('post.originalPost.content'),
+    return this.get('post.originalAuthorName') ? true : false;
+  }.property('post.originalAuthorName'),
 
   displayName: function () {
-    return this.get('post.originalPost.author.name') || this.get('post.author.name');
+    return this.get('post.originalPost.author.name') || this.get('post.originalAuthorName') || this.get('post.author.name');
   }.property('post.originalPost.author.name', 'post.author.name'),
 
   displayDate: function () {

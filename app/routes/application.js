@@ -13,7 +13,7 @@ export default Ember.Route.extend({
     });
   },
   actions: {
-    repost: function (originalPost) {
+    repost: function (originalPost, model) {
       var self = this;
       var newPost = this.store.createRecord('post', {
           content: originalPost.get('content')
@@ -26,14 +26,18 @@ export default Ember.Route.extend({
       newPost.get('author').then(function (fulfilledAuthor) {
         newPost.get('originalAuthor').then(function (fulfilledOriginalAuthor) {
           newPost.get('originalPost').then(function (fulfilledPost) {
-            newPost.save();
+            newPost.save().then(function () {
+              console.log(model);
+              model.addObject(newPost);
+            });
           });
         });
       });
       //TODO reconcile how to handle this with data on the server
       originalPost.set('repostedByCurrentUser', true);
     },
-    deletePost: function (post) {
+    deletePost: function (post, model) {
+      model.removeObject(post);
       post.destroyRecord();
     },
     error: function (error, transition) {
